@@ -48,7 +48,7 @@ public function logout () {
 
 Auth::logout();
 
-return Redirect::route('home')
+return Redirect::route('IndexPage')
 ->with('flash_notice', 'You are successfully logged out.');
 }
 
