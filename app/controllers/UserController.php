@@ -3,9 +3,6 @@
 class UserController extends BaseController {
 
 
-    public $layout = 'common.layout';
-
-
     public function listUsers()
     {
 

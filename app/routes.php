@@ -11,11 +11,13 @@
 |
 */
 
-Route::get('/', function()
-{
-	return View::make('hello');
-});
 
+
+
+//Index
+Route::get('/', array('as' => 'IndexPage',
+        'uses' => 'HomeController@indexPage')
+);
 
 //Users list
 Route::get('user/list', array('as' => 'UsersList',
