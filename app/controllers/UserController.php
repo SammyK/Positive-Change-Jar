@@ -49,7 +49,7 @@ class UserController extends BaseController {
 
         Auth::loginUsingId($user->id);
 
-        return Redirect::route('indexPage')
+        return Redirect::route('IndexPage')
             ->with('flash_notice', 'You are now a member');
 
     }

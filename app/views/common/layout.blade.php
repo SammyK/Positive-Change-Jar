@@ -12,12 +12,11 @@
 
 
 
-    <a href="#" class="dropdown-toggle" data-toggle="dropdown" style='padding-top: 5px; padding-bottom: 0px;'>
-        {{ Auth::user()->first_name }} </a>
+
+        Welcome {{ Auth::user()->first_name }}
 
 
-        <a href='#'><span class="glyphicon glyphicon-user"></span> Profile</a>
-        <a href='#'><span class="glyphicon glyphicon-log-out"></span> Logout</a>
+        <a href='{{ route('logout') }}'><span class="glyphicon glyphicon-log-out"></span> Logout</a>
 
 
 @else

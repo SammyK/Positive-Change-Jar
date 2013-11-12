@@ -41,3 +41,7 @@ Route::get('login', array('as' => 'login',
 //User login
 Route::post('login', 'AuthController@postLogin'
 )->before('csrf');
+
+
+Route::get('logout', array('as' => 'logout',
+    'uses' => 'AuthController@logout'));
