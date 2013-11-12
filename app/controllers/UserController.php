@@ -26,10 +26,16 @@ class UserController extends BaseController {
 
     public function postSignup () {
 
+        /*
+        $team = new Team;
+        $team->
+        */
+
         $user = new User;
         $user->email_address = Input::get('email_address');
         $user->first_name = Input::get('first_name');
         $user->last_name = Input::get('first_name');
+        $user->teams_id = 1000;
 
 
         //Uses the validation that is in the model
