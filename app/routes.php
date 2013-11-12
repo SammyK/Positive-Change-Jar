@@ -15,3 +15,9 @@ Route::get('/', function()
 {
 	return View::make('hello');
 });
+
+
+//Users list
+Route::get('user/list', array('as' => 'UsersList',
+        'uses' => 'UserController@listUsers')
+);
