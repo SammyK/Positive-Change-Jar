@@ -17,6 +17,7 @@ class HomeController extends BaseController {
 
 	public function showWelcome()
 	{
+
 		return View::make('hello');
 	}
 
@@ -26,8 +27,14 @@ class HomeController extends BaseController {
     {
 
 
+        $challenges = DB::select('SELECT * FROM challenges');
 
-        return View::make('index');
+        //Data for the content of the view
+        $data_view = array('challenges' => $challenges);
+
+
+
+        return View::make('index', $data_view);
 
     }
 
