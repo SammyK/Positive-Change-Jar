@@ -18,4 +18,35 @@ class UserController extends BaseController {
     }
 
 
+    public function indexSignup () {
+
+        return View::make('signup');
+
+    }
+
+    public function postSignup () {
+
+        $user = new User;
+        $user->email_address = Input::get('email_address');
+        $user->first_name = Input::get('first_name');
+        $user->last_name = Input::get('first_name');
+
+
+        //Uses the validation that is in the model
+        if ( ! $user->save() )
+        {
+
+            return Redirect::route('signup')
+                ->with('flash_error', 'Error');
+
+        }
+
+        Auth::loginUsingId($user->id);
+
+        return Redirect::route('indexPage')
+            ->with('flash_notice', 'You are now a member');
+
+    }
+
 }
+

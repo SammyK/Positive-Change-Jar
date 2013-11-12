@@ -23,3 +23,21 @@ Route::get('/', array('as' => 'IndexPage',
 Route::get('user/list', array('as' => 'UsersList',
         'uses' => 'UserController@listUsers')
 );
+
+//User Signup page
+Route::get('signup', array('as' => 'signup',
+        'uses' => 'UserController@indexSignup')
+);
+
+//User Signup
+Route::post('signup', 'UserController@postSignup'
+)->before('csrf');
+
+//User login Page
+Route::get('login', array('as' => 'login',
+        'uses' => 'AuthController@indexLogin')
+);
+
+//User login
+Route::post('login', 'AuthController@postLogin'
+)->before('csrf');
