@@ -49,10 +49,10 @@ return array(
 
 		'mysql' => array(
 			'driver'    => 'mysql',
-			'host'      => 'localhost',
-			'database'  => 'database',
-			'username'  => 'root',
-			'password'  => '',
+			'host'      => 'cruk2.cscvaiysepgo.us-east-1.rds.amazonaws.com',
+			'database'  => 'cruk2',
+			'username'  => 'cruk',
+			'password'  => 'CrukMe$!',
 			'charset'   => 'utf8',
 			'collation' => 'utf8_unicode_ci',
 			'prefix'    => '',

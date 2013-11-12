@@ -20,4 +20,15 @@ class HomeController extends BaseController {
 		return View::make('hello');
 	}
 
+
+
+    public function indexPage()
+    {
+
+
+
+        return View::make('index');
+
+    }
+
 }
