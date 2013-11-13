@@ -5,6 +5,8 @@
 
 <h1>My Setbacks</h1>
 
+<p><a class="btn btn-large btn-primary" href="#" id="fbShare">Brag on Facebook</a></p>
+
 @if(empty($failures))
     <p>You haven't failed yet! Good job! But if you ever do, your misgivings will be converted to good things!</p>
 @else
@@ -37,6 +39,11 @@
         e.src = document.location.protocol + '//connect.facebook.net/en_US/all.js';
         document.getElementById('fb-root').appendChild(e);
     }());
+
+
+    $(document).ready(function() {
+
+    });
 </script>
 
 @stop
