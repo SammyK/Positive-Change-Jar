@@ -120,5 +120,8 @@ Route::group(array('before' => 'auth'), function()
             'uses' => 'UserController@myFailures')
     );
 
+    Route::post('postFailure', array('as' => 'postFailure',
+        'uses' => 'FailureController@postFailure'));
+
 
 });
