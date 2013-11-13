@@ -75,7 +75,7 @@ class UserController extends BaseController {
         // Have they added a challenge?
         if( ! Session::has('added_challenge') )
         {
-            Redirect::to('user/challenge-create');
+            return Redirect::to('user/challenge-create');
         }
 
         $challenges = DB::select('SELECT * FROM

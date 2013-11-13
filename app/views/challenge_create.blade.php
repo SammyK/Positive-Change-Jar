@@ -6,7 +6,10 @@
 
 <div class="clearfix">
 @foreach ($challenges as $challenge)
-    <div class="challenge">{{ $challenge->name }}</div>
+    <div class="challenge">
+        <a href="/user/challenge-add/{{ $challenge->id }}"><img src="{{ $challenge->image_url }}" width="200"></a>
+        <p>{{ $challenge->name }}</p>
+    </div>
 @endforeach
 </div>
 
