@@ -21,8 +21,11 @@
 
     <?php
     $world_sum_sql = DB::select('select sum(t.penalty_per_misses) as total
-                               from user_fails_challenges fc, teams t
+                               from user_fails_challenges fc, teams t, users u
                                where t.challenge_id = fc.challenge_id
+
+                               AND u.team_id = t.id
+                               AND u.id = fc.user_id
                                AND fc.challenge_id = ?'
                                , array($challenge->id));
 
