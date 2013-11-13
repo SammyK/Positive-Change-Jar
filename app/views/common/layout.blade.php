@@ -23,8 +23,6 @@
 
 @else
 
-<a href='{{ route('signup') }}' class='btn btn-success'>Sign up</a>
-<a href='{{ route('login') }}' class='btn btn-default'>Sign in</a>
 
 @endif
 
