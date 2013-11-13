@@ -1,7 +1,7 @@
 @extends('common.layout')
 
 @section('content')
-<img style="width:180px; padding-right:100px;cursor:pointer;" class="pull-right" src="https://d30ta5c6zg0jma.cloudfront.net/temp/jar.png" onclick="alert('Donated'); window.location.href='http://cruk2.appol.is/';"/>
+<img style="width:180px; padding-right:100px;cursor:pointer;" class="pull-right" src="https://d30ta5c6zg0jma.cloudfront.net/temp/jar.png" onclick="alert('Donation sent. Thanks for turning your setback into positive change!'); window.location.href='http://cruk2.appol.is/';"/>
 
 <h1>My Setbacks</h1>
 
