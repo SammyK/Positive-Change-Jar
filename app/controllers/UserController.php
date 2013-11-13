@@ -84,9 +84,10 @@ class UserController extends BaseController {
 
 
 
-        $failures = DB::select('SELECT  c.name, c.description, fc.created_at, c.penalty_per_misses FROM
-        users u, challenges c, user_fails_challenges fc
+        $failures = DB::select('SELECT  c.name, c.description, fc.created_at, t.penalty_per_misses FROM
+        users u, challenges c, user_fails_challenges fc, teams t
         WHERE u.id = ?
+        AND u.team_id = t.id
         AND fc.user_id = u.id
         AND fc.challenge_id = c.id
 

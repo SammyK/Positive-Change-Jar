@@ -7,6 +7,7 @@
 
 @foreach ($challenges as $challenge)
 
+<img src="{{$challenge->image_url }}">
 <b>{{$challenge->name }}</b> ({{ $challenge->description }})
     {{ Form::open(array('route' => 'postFailure')) }}
 
@@ -19,19 +20,19 @@
     {{ Form::close() }}
 
     <?php
-    $world_sum_sql = DB::select('select sum(c.penalty_per_misses) as total
-                               from challenges c, user_fails_challenges fc
-                               where c.id = fc.challenge_id
-                               AND c.id = ?'
+    $world_sum_sql = DB::select('select sum(t.penalty_per_misses) as total
+                               from user_fails_challenges fc, teams t
+                               where t.challenge_id = fc.challenge_id
+                               AND fc.challenge_id = ?'
                                , array($challenge->id));
 
 
     $world_total = $world_sum_sql[0]->total;
 
-    $user_sum_sql = DB::select('select sum(c.penalty_per_misses) as total
-                               from challenges c, user_fails_challenges fc
-                               where c.id = fc.challenge_id
-                               AND c.id = ?
+    $user_sum_sql = DB::select('select sum(t.penalty_per_misses) as total
+                               from teams t, user_fails_challenges fc
+                               where t.challenge_id = fc.challenge_id
+                               AND fc.challenge_id = ?
                                AND fc.user_id = ?'
         , array($challenge->id, Auth::user()->id));
 
@@ -43,7 +44,7 @@
 
     <i class="icon-thumbs-up"></i> Because of this challenge, you have already donated U$ {{ $user_total }}<BR>
     <i class="icon-globe"></i>This challenge has already helped to raise U$ {{ $world_total }} from all around the world.
-
+</li>
 <hr>
 
 @endforeach
