@@ -35,7 +35,7 @@ class UserController extends BaseController {
         $user->email_address = Input::get('email_address');
         $user->first_name = Input::get('first_name');
         $user->last_name = Input::get('first_name');
-        $user->teams_id = 1000;
+        $user->team_id = 1000;
 
 
         //Uses the validation that is in the model
@@ -60,10 +60,12 @@ class UserController extends BaseController {
 
 
         $challenges = DB::select('SELECT * FROM
-        users u, teams t, challenges c
+        users u, teams t, challenges c, user_fails_challenges fc
         WHERE u.id = ?
-        AND u.teams_id = t.id
+        AND u.team_id = t.id
         AND t.challenge_id = c.id
+        AND fc.user_id = u.id
+        AND fc.challenge_id = c.id
         ', array(Auth::user()->id));
 
         //Data for the content of the view
@@ -75,6 +77,26 @@ class UserController extends BaseController {
 
     }
 
+
+    public function myFailures()
+    {
+
+
+        $failures = DB::select('SELECT * FROM
+        users u, teams t, challenges c
+        WHERE u.id = ?
+        AND u.team_id = t.id
+        AND t.challenge_id = c.id
+        ', array(Auth::user()->id));
+
+        //Data for the content of the view
+        $data_view = array('failures' => $failures);
+
+
+
+        return View::make('myfailures', $data_view);
+
+    }
 
 }
 

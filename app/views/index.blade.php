@@ -9,7 +9,7 @@
 <h2>Home Page</h2>
 
 
-<h3>Last challenges</h3>
+<h3>Last challenges posted</h3>
 
 @foreach ($challenges as $challenge)
 <p>

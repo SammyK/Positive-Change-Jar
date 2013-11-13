@@ -53,9 +53,14 @@ Route::group(array('before' => 'auth'), function()
         'uses' => 'AuthController@logout'));
 
 
-//My challenges Page
+    //My challenges Page
     Route::get('user/challenges', array('as' => 'mychallenges',
             'uses' => 'UserController@myChallenges')
+    );
+
+    //My failures Page
+    Route::get('user/failures', array('as' => 'myfailures',
+            'uses' => 'UserController@myFailures')
     );
 
 

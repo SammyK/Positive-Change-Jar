@@ -17,6 +17,7 @@
 
 
 <a href='{{ route('mychallenges') }}'><span class="glyphicon glyphicon-log-out"></span> My Challenges</a>
+<a href='{{ route('myfailures') }}'><span class="glyphicon glyphicon-log-out"></span> My failures</a>
 <a href='{{ route('logout') }}'><span class="glyphicon glyphicon-log-out"></span> Logout</a>
 
 
