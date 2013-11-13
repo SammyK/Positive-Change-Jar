@@ -19,6 +19,63 @@ Route::get('/', array('as' => 'IndexPage',
         'uses' => 'HomeController@indexPage')
 );
 
+// Facebook authentication endpoints
+// Show FB Prompt
+Route::get('login/fb', function() {
+        $facebook = new Facebook(Config::get('facebook'));
+        $params = array(
+            'redirect_uri' => url('/login/fb/callback'),
+            'scope' => 'email',
+        );
+        return Redirect::to($facebook->getLoginUrl($params));
+});
+// Process response from FB
+Route::get('login/fb/callback', function() {
+        $code = Input::get('code');
+        if (strlen($code) == 0) return Redirect::to('/')->with('message', 'There was an error communicating with Facebook');
+
+        $facebook = new Facebook(Config::get('facebook'));
+        $uid = $facebook->getUser();
+
+        if ($uid == 0) return Redirect::to('/')->with('message', 'There was an error');
+
+        $me = $facebook->api('/me');
+
+        //dd($me);
+
+        $profile = Profile::whereUid($uid)->first();
+        if (empty($profile)) {
+
+            $team = new Team;
+            $team->challenge_id = 100;
+            $team->team_name = $me['first_name'] . ' ' . $me['last_name'];
+            $team->save();
+
+            $user = new User;
+            $user->team_id = $team->id;
+            $user->first_name = $me['first_name'];
+            $user->last_name = $me['last_name'];
+            $user->email_address = $me['email'];
+            //$user->photo = 'https://graph.facebook.com/'.$me['username'].'/picture?type=large';
+
+            $user->save();
+
+            $profile = new Profile();
+            $profile->uid = $uid;
+            $profile->username = $me['username'];
+            $profile = $user->profiles()->save($profile);
+        }
+
+        $profile->access_token = $facebook->getAccessToken();
+        $profile->save();
+
+        $user = $profile->user;
+
+        Auth::login($user);
+
+        return Redirect::to('/')->with('message', 'Logged in with Facebook');
+});
+
 //Users list
 Route::get('user/list', array('as' => 'UsersList',
         'uses' => 'UserController@listUsers')
