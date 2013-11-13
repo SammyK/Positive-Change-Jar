@@ -12,7 +12,7 @@ class FailureController extends BaseController {
         ', array(Input::get('user'),Input::get('challenge')));
 
         return Redirect::route('myfailures')
-            ->with('flash_notice', 'Thank you, you just make a donation!');
+            ->with('flash_notice', 'Thank you, you just made a donation!');
 
 
     }
