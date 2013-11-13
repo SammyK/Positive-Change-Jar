@@ -24,13 +24,25 @@ class UserController extends BaseController {
 
     }
 
-    public function createChallenge() {
+    public function addChallenge($id) {
+        $team = User::find(Auth::user()->id)->team()->get();
+
+        $team = Team::find($team[0]->id);
+        $team->challenge_id = $id;
+        $team->save();
+
+        Session::put('added_challenge', true);
+
+        return Redirect::to('user/challenges');
+    }
+
+    function createChallenge() {
 
         // Does this user already have a challenge?
         //$mine = Challenge::where('user_id', Auth::user()->id)->get();
         if( Session::has('added_challenge') )
         {
-            Redirect::to('user/challenges');
+            return Redirect::to('user/challenges');
         }
 
         $challenges = Challenge::all();

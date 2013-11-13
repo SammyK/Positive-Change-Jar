@@ -110,6 +110,11 @@ Route::group(array('before' => 'auth'), function()
             'uses' => 'UserController@createChallenge')
     );
 
+    // Create a new challenge
+    Route::get('user/challenge-add/{id}', array('as' => 'add-challenges',
+            'uses' => 'UserController@addChallenge')
+    );
+
     //My challenges Page
     Route::get('user/challenges', array('as' => 'mychallenges',
             'uses' => 'UserController@myChallenges')
