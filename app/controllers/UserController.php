@@ -70,6 +70,10 @@ class UserController extends BaseController {
 
 
 
+
+
+
+
         return View::make('mychallenges', $data_view);
 
     }
