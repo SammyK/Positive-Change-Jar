@@ -2,6 +2,8 @@
 
 
 @section('content')
+<img style="width:180px; padding-right:100px;cursor:pointer;" class="pull-right" src="https://d30ta5c6zg0jma.cloudfront.net/temp/jar.png" onclick="alert('Donated'); window.location.href='http://cruk2.appol.is/';"/>
+
 <h1>My Fail Log</h1>
 
 @if(empty($failures))
@@ -20,6 +22,7 @@
 </ul>
 
 <p>You have donated ${{ $sum }} so far</p>
+
 @endif
 
 @stop
