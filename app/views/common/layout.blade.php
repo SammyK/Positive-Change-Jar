@@ -119,7 +119,6 @@
 
                 <li><a href="{{ route('mychallenges') }}">Challenges</a></li>
                 <li><a href="{{ route('myfailures') }}">Leaderboard</a></li>
-                <li><a href="{{ route('about') }}">About</a></li>
                 <li><a href="mailto:kar2905@gmail.com">Contact</a></li>
                 <li><a href="{{ route('logout') }}">Logout</a></li>
               </ul>
