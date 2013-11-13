@@ -19,7 +19,7 @@
 @endforeach
 </ul>
 
-<p>You have donated $ {{ $sum }} so far</p>
+<p>You have donated ${{ $sum }} so far</p>
 @endif
 
 @stop
