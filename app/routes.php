@@ -18,6 +18,9 @@
 Route::get('/', array('as' => 'IndexPage',
         'uses' => 'HomeController@indexPage')
 );
+Route::post('/', array('as' => 'IndexPage',
+        'uses' => 'HomeController@indexPage')
+);
 
 // Facebook authentication endpoints
 // Show FB Prompt
@@ -48,6 +51,7 @@ Route::get('login/fb/callback', function() {
 
             $team = new Team;
             $team->challenge_id = 100;
+            $team->penalty_per_misses = 1;
             $team->team_name = $me['first_name'] . ' ' . $me['last_name'];
             $team->save();
 
