@@ -35,7 +35,12 @@ App::after(function($request, $response)
 
 Route::filter('auth', function()
 {
-	if (Auth::guest()) return Redirect::guest('login');
+    if (Auth::guest()) {
+
+        Session::put('pre_login_url', URL::full());
+        return Redirect::route('login')
+            ->with('flash_error', 'You must be logged in to view this page!');
+    }
 });
 
 
