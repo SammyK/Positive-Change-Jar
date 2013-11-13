@@ -16,7 +16,8 @@
         Welcome {{ Auth::user()->first_name }}
 
 
-        <a href='{{ route('logout') }}'><span class="glyphicon glyphicon-log-out"></span> Logout</a>
+<a href='{{ route('mychallenges') }}'><span class="glyphicon glyphicon-log-out"></span> My Challenges</a>
+<a href='{{ route('logout') }}'><span class="glyphicon glyphicon-log-out"></span> Logout</a>
 
 
 @else

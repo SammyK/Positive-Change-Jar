@@ -43,5 +43,20 @@ Route::post('login', 'AuthController@postLogin'
 )->before('csrf');
 
 
-Route::get('logout', array('as' => 'logout',
-    'uses' => 'AuthController@logout'));
+
+
+
+Route::group(array('before' => 'auth'), function()
+{
+
+    Route::get('logout', array('as' => 'logout',
+        'uses' => 'AuthController@logout'));
+
+
+//My challenges Page
+    Route::get('user/challenges', array('as' => 'mychallenges',
+            'uses' => 'UserController@myChallenges')
+    );
+
+
+});

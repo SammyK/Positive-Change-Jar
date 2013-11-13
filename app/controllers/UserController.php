@@ -54,5 +54,27 @@ class UserController extends BaseController {
 
     }
 
+
+    public function myChallenges()
+    {
+
+
+        $challenges = DB::select('SELECT * FROM
+        users u, teams t, challenges c
+        WHERE u.id = ?
+        AND u.teams_id = t.id
+        AND t.challenge_id = c.id
+        ', array(Auth::user()->id));
+
+        //Data for the content of the view
+        $data_view = array('challenges' => $challenges);
+
+
+
+        return View::make('mychallenges', $data_view);
+
+    }
+
+
 }
 
