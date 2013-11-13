@@ -60,13 +60,10 @@ class UserController extends BaseController {
 
 
         $challenges = DB::select('SELECT * FROM
-        users u, teams t, challenges c, user_fails_challenges fc
+        users u, teams t, challenges c
         WHERE u.id = ?
         AND u.team_id = t.id
-        AND t.challenge_id = c.id
-        AND fc.user_id = u.id
-        AND fc.challenge_id = c.id
-        ', array(Auth::user()->id));
+        AND t.challenge_id = c.id', array(Auth::user()->id));
 
         //Data for the content of the view
         $data_view = array('challenges' => $challenges);
@@ -82,15 +79,18 @@ class UserController extends BaseController {
     {
 
 
+
         $failures = DB::select('SELECT * FROM
-        users u, teams t, challenges c
+        users u, teams t, challenges c, user_fails_challenges fc
         WHERE u.id = ?
         AND u.team_id = t.id
         AND t.challenge_id = c.id
+        AND fc.user_id = u.id
+        AND fc.challenge_id = c.id
         ', array(Auth::user()->id));
 
         //Data for the content of the view
-        $data_view = array('failures' => $failures);
+        $data_view = array('failures' => $failures, 'sum' => 0);
 
 
 
