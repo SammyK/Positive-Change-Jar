@@ -14,12 +14,12 @@
     <?php
     $objDateTime = new DateTime($fail->created_at);
     ?>
-    <li><b>{{ $objDateTime->format('m-d-Y H:i') }}</b> ({{ $fail->description }}) Change: U$ {{ $fail->penalty_per_misses }}</li>
+    <li><b>{{ $objDateTime->format('m-d-Y H:i') }}</b> ({{ $fail->description }}) Change: $ {{ $fail->penalty_per_misses }}</li>
     <?php $sum += $fail->penalty_per_misses; ?>
 @endforeach
 </ul>
 
-<p>You have donated U$ {{ $sum }} so far</p>
+<p>You have donated $ {{ $sum }} so far</p>
 @endif
 
 @stop

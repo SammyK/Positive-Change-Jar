@@ -4,7 +4,7 @@
 @section('content')
 
 <p>Positive Jar is an app that let's your turn your bad habits into good deeds.
-    Every time you swear or don't work out eat cake, add some money to the jar.
+    Every time you swear or don't work out, eat cake, add some money to the jar.
     All that change adds up to change a real-world problem. Cancer Research UK
     receives the money from the jar and 100% of that money goes into defeating cancer.</p>
 
