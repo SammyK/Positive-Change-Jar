@@ -6,7 +6,6 @@
 <BR><BR>
 
 
-<h2>Home Page</h2>
 
 <!-- <a href="{{ route('UsersList') }}">Users List</a> -->
 
@@ -23,7 +22,7 @@ Your email is {{ $data['email_address']}}
 <br>
 <a href="logout">Logout</a>
 @else
-Hi! Would you like to <a href="login/fb">Login with Facebook</a>?
+Hi! Would you like to <a class="btn btn-large btn-primary" href="login/fb">Login with Facebook</a>?
 @endif
 
 <h3>Last challenges posted</h3>
