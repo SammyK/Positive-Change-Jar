@@ -11,19 +11,12 @@
 
 <ul>
 @foreach ($failures as $fail)
-    <li><b>{{ $fail->created_at }}</b> ({{ $fail->description }}) Change: U$ {{ $fail->penalty_per_misses }}</li>
-    <?php $sum += $fail->penalty_per_misses; ?>
-@foreach ($failures as $fail)
-
 <?php
 
 $objDateTime = new DateTime($fail->created_at);
 
 ?>
-
-<p>
 <li><b>{{$fail->name }}</b> at {{ $objDateTime->format('m-d-Y H:i') }}<BR>Penalty: U$ {{ $fail->penalty_per_misses }}</li>
-</p>
 <?php $sum += $fail->penalty_per_misses; ?>
 @endforeach
 </ul>
