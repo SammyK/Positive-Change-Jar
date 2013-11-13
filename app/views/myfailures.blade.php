@@ -3,12 +3,12 @@
 @section('content')
 <img style="width:180px; padding-right:100px;cursor:pointer;" class="pull-right" src="https://d30ta5c6zg0jma.cloudfront.net/temp/jar.png" onclick="alert('Donated'); window.location.href='http://cruk2.appol.is/';"/>
 
-<h1>My Fail Log</h1>
+<h1>My Setbacks</h1>
 
 @if(empty($failures))
     <p>You haven't failed yet! Good job! But if you ever do, your misgivings will be converted to good things!</p>
 @else
-<p>Yeah, you've failed. But don't worry! It's all for a good cause!</p>
+<p>Yes, you had a setback. But don't worry! It's all for a good cause!</p>
 
 <ul>
 @foreach ($failures as $fail)

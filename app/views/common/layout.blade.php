@@ -119,7 +119,7 @@
               <ul class="nav">
                 <li><a href="{{ route('IndexPage') }}">Home</a></li>
                 <li><a href="{{ route('mychallenges') }}">My Jar</a></li>
-                <li><a href="{{ route('myfailures') }}">My Fail Log</a></li>
+                <li><a href="{{ route('myfailures') }}">My Setbacks</a></li>
               </ul>
             </div>
           </div>
