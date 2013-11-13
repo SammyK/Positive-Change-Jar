@@ -7,7 +7,7 @@
 
 @foreach ($challenges as $challenge)
 
-<img class="span2 challenges" src="{{$challenge->image_url }}">
+<img class="span2 challenges" style="width:100px" src="{{$challenge->image_url }}">
 <b>{{$challenge->name }}</b> ({{ $challenge->description }})
     {{ Form::open(array('route' => 'postFailure')) }}
 
