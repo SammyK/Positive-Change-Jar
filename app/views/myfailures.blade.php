@@ -3,15 +3,18 @@
 
 @section('content')
 
-<BR><BR>
-
-
-
 <h3>My Failures</h3>
 
 @foreach ($failures as $fail)
+
+<?php
+
+$objDateTime = new DateTime($fail->created_at);
+
+?>
+
 <p>
-<li><b>{{$fail->name }}</b> ({{ $fail->description }})<BR>Penalty: U$ {{ $fail->penalty_per_misses }}</li>
+<li><b>{{$fail->name }}</b> at {{ $objDateTime->format('m-d-Y H:i') }}<BR>Penalty: U$ {{ $fail->penalty_per_misses }}</li>
 </p>
 <?php $sum += $fail->penalty_per_misses; ?>
 @endforeach
