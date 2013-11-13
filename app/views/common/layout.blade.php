@@ -112,26 +112,19 @@
               <div class="welcome pull-right">Welcome {{ Auth::user()->first_name }}</div>
               @endif
           </div>
+        @if(Auth::check())
         <div class="navbar">
           <div class="navbar-inner">
             <div class="container">
               <ul class="nav">
                 <li><a href="{{ route('IndexPage') }}">Home</a></li>
-              @if(Auth::check())
                 <li><a href="{{ route('mychallenges') }}">My Jar</a></li>
                 <li><a href="{{ route('myfailures') }}">My Fail Log</a></li>
-              @else
-                  <!--
-                  <div class="row">
-                  <a href='{{ route('signup') }}' class='btn btn-success'>Sign up</a>
-                  <a href='{{ route('login') }}' class='btn btn-default'>Sign in</a>
-                  </div>
-                  -->
-              @endif
               </ul>
             </div>
           </div>
         </div><!-- /.navbar -->
+        @endif
       </div>
 
 <div class="content-area">

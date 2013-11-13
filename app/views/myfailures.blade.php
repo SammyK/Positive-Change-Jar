@@ -1,6 +1,5 @@
 @extends('common.layout')
 
-
 @section('content')
 <h1>My Fail Log</h1>
 

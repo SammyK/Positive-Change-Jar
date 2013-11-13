@@ -24,6 +24,21 @@ class UserController extends BaseController {
 
     }
 
+    public function createChallenge() {
+
+        // Does this user already have a challenge?
+        //$mine = Challenge::where('user_id', Auth::user()->id)->get();
+        if( Session::has('added_challenge') )
+        {
+            Redirect::to('user/challenges');
+        }
+
+        $challenges = Challenge::all();
+        $data_view = array('challenges' => $challenges);
+
+        return View::make('challenge_create', $data_view);
+    }
+
     public function postSignup () {
 
         /*
@@ -57,7 +72,11 @@ class UserController extends BaseController {
 
     public function myChallenges()
     {
-
+        // Have they added a challenge?
+        if( ! Session::has('added_challenge') )
+        {
+            Redirect::to('user/challenge-create');
+        }
 
         $challenges = DB::select('SELECT * FROM
         users u, teams t, challenges c

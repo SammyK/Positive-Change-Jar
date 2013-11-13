@@ -73,7 +73,7 @@ Route::get('login/fb/callback', function() {
 
         Auth::login($user);
 
-        return Redirect::to('/')->with('flash_notice', 'Logged in with Facebook');
+        return Redirect::to('user/challenge-create')->with('flash_notice', 'Logged in with Facebook');
 });
 
 //Users list
@@ -92,13 +92,8 @@ Route::post('signup', 'UserController@postSignup'
 
 //User login Page
 Route::get('login', array('as' => 'login',
-        'uses' => 'AuthController@indexLogin')
+        'uses' => 'HomeController@indexPage')
 );
-
-//User login
-Route::post('login', 'AuthController@postLogin'
-)->before('csrf');
-
 
 
 
@@ -109,6 +104,11 @@ Route::group(array('before' => 'auth'), function()
     Route::get('logout', array('as' => 'logout',
         'uses' => 'AuthController@logout'));
 
+
+    // Create a new challenge
+    Route::get('user/challenge-create', array('as' => 'create-challenges',
+            'uses' => 'UserController@createChallenge')
+    );
 
     //My challenges Page
     Route::get('user/challenges', array('as' => 'mychallenges',
