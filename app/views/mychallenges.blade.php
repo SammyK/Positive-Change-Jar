@@ -7,7 +7,7 @@
 
 @foreach ($challenges as $challenge)
 
-<img src="{{$challenge->image_url }}">
+<img class="span2 challenges" src="{{$challenge->image_url }}">
 <b>{{$challenge->name }}</b> ({{ $challenge->description }})
     {{ Form::open(array('route' => 'postFailure')) }}
 
@@ -15,7 +15,7 @@
     {{ Form::hidden('challenge', $challenge->id) }}
 
     <!-- submit button -->
-    {{ Form::submit('Ops, I did it again - Penalty: U$ ' . $challenge->penalty_per_misses , array('class' => 'btn btn-success btn-lg')) }}</p>
+    {{ Form::submit('Oops, I did it again - Penalty: U$ ' . $challenge->penalty_per_misses , array('class' => 'btn btn-success btn-lg')) }}</p>
 
     {{ Form::close() }}
 
