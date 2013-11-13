@@ -32,12 +32,12 @@ Route::get('login/fb', function() {
 // Process response from FB
 Route::get('login/fb/callback', function() {
         $code = Input::get('code');
-        if (strlen($code) == 0) return Redirect::to('/')->with('message', 'There was an error communicating with Facebook');
+        if (strlen($code) == 0) return Redirect::to('/')->with('flash_notice', 'There was an error communicating with Facebook');
 
         $facebook = new Facebook(Config::get('facebook'));
         $uid = $facebook->getUser();
 
-        if ($uid == 0) return Redirect::to('/')->with('message', 'There was an error');
+        if ($uid == 0) return Redirect::to('/')->with('flash_notice', 'There was an error');
 
         $me = $facebook->api('/me');
 
@@ -73,7 +73,7 @@ Route::get('login/fb/callback', function() {
 
         Auth::login($user);
 
-        return Redirect::to('/')->with('message', 'Logged in with Facebook');
+        return Redirect::to('/')->with('flash_notice', 'Logged in with Facebook');
 });
 
 //Users list

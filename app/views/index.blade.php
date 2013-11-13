@@ -3,29 +3,19 @@
 
 @section('content')
 
-<BR><BR>
+<p>Positive Jar is an app that let's your turn your bad habits into good deeds.
+    Every time you swear or don't work out eat cake, add some money to the jar.
+    All that change adds up to change a real-world problem. Cancer Research UK
+    receives the money from the jar and 100% of that money goes into defeating cancer.</p>
 
-
-
-<!-- <a href="{{ route('UsersList') }}">Users List</a> -->
-
-@if(Session::has('message'))
-{{ Session::get('message')}}
-@endif
-<br>
-
-@if (!empty($data))
-Hello, {{{ $data['first_name'] }}}
-<img src="https://graph.facebook.com/{{ $data['id']}}/picture?type=large'">
-<br>
-Your email is {{ $data['email_address']}}
-<br>
-<a href="logout">Logout</a>
+@if(Auth::check())
+<p><a class="btn btn-large btn-success" href="{{ route('mychallenges') }}">Go to My Jar</a></p>
 @else
-Hi! Would you like to <a class="btn btn-large btn-primary" href="login/fb">Login with Facebook</a>?
+<p><a class="btn btn-large btn-primary" href="login/fb">Create a Jar with my Facebook</a></p>
 @endif
 
-<h3>Last challenges posted</h3>
+<!--
+<h3>Last challenges posted</h3> -->
 <?
 /*
 @foreach ($challenges as $challenge)
@@ -35,8 +25,4 @@ Hi! Would you like to <a class="btn btn-large btn-primary" href="login/fb">Login
 @endforeach
 */
 ?>
-<h3>Links</h3>
-
-<li><a href="{{ route('UsersList') }}">Users List</a></li>
-
 @stop

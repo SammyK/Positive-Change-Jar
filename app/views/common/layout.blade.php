@@ -88,6 +88,9 @@
       .challenge-image{
         width:60%;
       }
+       .content-area {
+           padding: 20px 0 40px;
+       }
     </style>
     <link href="/assets/css/bootstrap-responsive.css" rel="stylesheet">
 
@@ -103,66 +106,63 @@
     <div class="container">
 
       <div class="masthead">
-        <img src="/assets/img/CRUK_Pos_CMYK_300.jpg" style="width:300px" class="muted"/>
+          <div class="header clearfix">
+              <div class="logo pull-left"><img src="/assets/img/CRUK_Pos_CMYK_300.jpg" style="width:300px" class="muted"/></div>
+              @if(Auth::check())
+              <div class="welcome pull-right">Welcome {{ Auth::user()->first_name }}</div>
+              @endif
+          </div>
         <div class="navbar">
           <div class="navbar-inner">
             <div class="container">
               <ul class="nav">
-              	                <li class="active"><a href="{{ route('IndexPage') }}">Home</a></li>
+                <li><a href="{{ route('IndexPage') }}">Home</a></li>
               @if(Auth::check())
-
-                <li><a href="{{ route('mychallenges') }}">Challenges</a></li>
-                <li><a href="{{ route('myfailures') }}">Leaderboard</a></li>
-                <li><a href="mailto:kar2905@gmail.com">Contact</a></li>
-                <li><a href="{{ route('logout') }}">Logout</a></li>
+                <li><a href="{{ route('mychallenges') }}">My Jar</a></li>
+                <li><a href="{{ route('myfailures') }}">My Fail Log</a></li>
+              @else
+                  <!--
+                  <div class="row">
+                  <a href='{{ route('signup') }}' class='btn btn-success'>Sign up</a>
+                  <a href='{{ route('login') }}' class='btn btn-default'>Sign in</a>
+                  </div>
+                  -->
+              @endif
               </ul>
             </div>
           </div>
         </div><!-- /.navbar -->
       </div>
 
-<a href="{{ route('IndexPage') }}">Home</a>
+<div class="content-area">
 
+    <!-- check for flash notification message -->
+    @if(Session::has('flash_notice'))
+    <div class="alert alert-success alert-dismissable">
+        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+        {{ Session::get('flash_notice') }}
+    </div>
+    @endif
 
+    <!-- check for login error flash var -->
+    @if (Session::has('flash_error'))
+    <div class="alert alert-danger alert-dismissable">
+        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+        {{ Session::get('flash_error') }}
+    </div>
+    @endif
 
+    @yield('content')
 
-
-        Welcome {{ Auth::user()->first_name }}
-
-
-@else
-
-<!--
-<div class="row">
-<a href='{{ route('signup') }}' class='btn btn-success'>Sign up</a>
-<a href='{{ route('login') }}' class='btn btn-default'>Sign in</a>
 </div>
--->
-@endif
 
+        <ul class="breadcrumb">
+            <li><a href="{{ route('IndexPage') }}">Home</a> <span class="divider">/</span></li>
+            <li><a href="mailto:kar2905@gmail.com">Contact</a> <span class="divider">/</span></li>
+            <li><a href="{{ route('logout') }}">Logout</a></li>
+        </ul>
 
-<hr>
-
-<!-- check for flash notification message -->
-@if(Session::has('flash_notice'))
-<div class="alert alert-success alert-dismissable">
-    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-    {{ Session::get('flash_notice') }}
 </div>
-@endif
-
-<!-- check for login error flash var -->
-@if (Session::has('flash_error'))
-<div class="alert alert-danger alert-dismissable">
-    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-    {{ Session::get('flash_error') }}
-</div>
-@endif
-
-@yield('content')
 
 </BODY>
-
-
-
 </HTML>
