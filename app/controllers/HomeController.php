@@ -24,13 +24,14 @@ class HomeController extends BaseController {
 
     public function indexPage()
     {
+
         $data = null;
         if (Auth::check()) {
             $data = Auth::user();
             $data = $data->toArray();
             //dd($data);
         }
-        return View::make('index', array('data'=>$data));
+        return View::make('index', array('data'=>$data, 'challenges'=>null));
 
     }
 
