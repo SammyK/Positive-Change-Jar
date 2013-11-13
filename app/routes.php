@@ -18,7 +18,7 @@
 Route::get('/', array('as' => 'IndexPage',
         'uses' => 'HomeController@indexPage')
 );
-Route::post('/', array('as' => 'IndexPage',
+Route::post('/', array(
         'uses' => 'HomeController@indexPage')
 );
 
